@@ -1,0 +1,27 @@
+volumes: 
+  postgres_data:
+
+services:
+  postgres:
+    build: .
+    image: postgresql_local
+    hostname: postgresql_local
+    restart: always
+    networks:
+      - network1
+    environment:
+      POSTGRES_PASSWORD: postgresql
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d postgres -U postgres"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+networks:
+  network1:
+    name: apps_local
+    external: true
