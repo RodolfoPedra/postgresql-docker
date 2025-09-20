@@ -6,12 +6,13 @@ services:
     build: .
     image: postgresql_local
     hostname: postgresql_local
-    networks:
-      - net_swarm
+    network_mode: host
+    # networks:
+    #   - net_swarm
     environment:
       POSTGRES_PASSWORD: postgresql
-    ports:
-      - 5432:5432
+    # ports:
+    #   - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data:rw
     deploy:
@@ -32,7 +33,7 @@ services:
       retries: 10
       start_period: 15s
       
-networks:
-  net_swarm:
-    external: true
-    name: net_swarm
+# networks:
+#   net_swarm:
+#     external: true
+#     name: net_swarm
