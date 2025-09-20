@@ -6,7 +6,6 @@ services:
     build: .
     image: postgresql_server
     hostname: postgresql_server
-    restart: always
     networks:
       - net_swarm
     environment:
@@ -19,8 +18,8 @@ services:
       replicas: 1
       resources:
         limits:
-          cpus: "0.8"
-          memory: 512M
+          cpus: "1"
+          memory: 1G
         reservations:
           cpus: "0.5"
           memory: 256M
