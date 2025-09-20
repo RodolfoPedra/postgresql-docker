@@ -30,7 +30,7 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
-      start_period: 10s
+      start_period: 15s
       
 networks:
   net_swarm:
